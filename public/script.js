@@ -30,6 +30,12 @@ new Vue({
 					qty: 1
 				});
 		}
+		},
+		inc:function(){
+			console.log('inc')
+		},
+		dec:function(){
+			console.log('dec')
 		}
 	},
 	filters: {
