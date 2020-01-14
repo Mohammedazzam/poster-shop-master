@@ -15,7 +15,12 @@ new Vue({
 			// this.total +=9.99;
 			// console.log(product.id)
 			this.total += product.price;
-			this.cart.push(product);
+			this.cart.push({
+				id: product.id,
+				title: product.title,
+				price: product.price,
+				qty: 1
+			});
 		}
 	}
 });
