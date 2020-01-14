@@ -31,11 +31,19 @@ new Vue({
 				});
 		}
 		},
-		inc:function(){
-			console.log('inc')
+		inc:function(item){
+			// console.log('inc')
+			item.qty++;
+			this.total +=item.price
 		},
-		dec:function(){
-			console.log('dec')
+		dec:function(item){
+			// console.log('dec')
+			item.qty--;
+			this.total -=item.price
+			if(item.qty <= 0){   //هذه خاصة حتى ما أرجع لما بعد الصفر
+				var i = this.cart.indexOf(item);//هذه خاصة حتى ما أرجع لما بعد الصفر
+				this.cart.splice(i,1);//هذه خاصة حتى ما أرجع لما بعد الصفر
+			}
 		}
 	},
 	filters: {
