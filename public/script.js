@@ -8,9 +8,14 @@ new Vue({
 			{title:"product 3", id:3}
 		]
 	},
+	cart:[
+
+	],
 	methods: {
-		addToCart:function(){
-			this.total +=9.99;
+		addToCart:function(product){
+			// this.total +=9.99;
+			console.log(product.id)
+
 		}
 	},
 })
