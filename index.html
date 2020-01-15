@@ -20,7 +20,9 @@
             </div>
         </div>
         <form class="search-bar" v-on:submit.prevent=onSubmit> <!--تمنع تحديث الصفحةpreventال--> 
-            <input type="submit" value="Search" class="btn">
+			<!-- <input type="text" placeholder="Search for posters" required v-bind:value="serarch">  -->
+			<input type="text" placeholder="Search for posters" required v-model="search"> <!--اختصار للي فوق-->
+			<input type="submit" value="Search" class="btn">
         </form>
     </div>
     <div class="main container">
