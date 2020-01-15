@@ -44,6 +44,9 @@ new Vue({
 				var i = this.cart.indexOf(item);//هذه خاصة حتى ما أرجع لما بعد الصفر
 				this.cart.splice(i,1);//هذه خاصة حتى ما أرجع لما بعد الصفر
 			}
+		},
+		onSubmit:function(){
+			console.log("search")
 		}
 	},
 	filters: {
