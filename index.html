@@ -24,13 +24,19 @@
 			<input type="text" placeholder="Search for posters" required v-model="search"> <!--اختصار للي فوق-->
 			<input type="submit" value="Search" class="btn">
 		</form>
-		<p>Try Search Tearms <em>cat, dog, flower</em></p>
+		<p>Try Search Tearms <em>cat, dog, flowers</em></p>
     </div>
     <div class="main container">
         <div class="products">
 			<div v-for="product in products" class="product" v-bind:key="product.id">
 				<div>
-				<h4 class="product-title">{{product.title}}</h4>
+					<div class="product-image">
+						<img v-bind:src="product.thumb">
+					</div>
+				</div>
+		<div>
+			<h4 class="product-title">{{product.title}}</h4>
+			<p class="product-price"><strong>{{ product.price | currency }}</strong></p>
 			<!-- <button v-on:click="total +=9.99">Add To Cart</button> -->
 			<button v-on:click="addToCart(product)" class="add-to-cart btn">Add To Cart</button>
 		</div>
