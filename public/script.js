@@ -46,14 +46,21 @@ new Vue({
 				this.cart.splice(i,1);//هذه خاصة حتى ما أرجع لما بعد الصفر
 			}
 		},
-		onSubmit:function(){
-			console.log("search")
+		onSubmit: function() {
+			// console.log("search")
+			var path = "/search?q=".concat(this.search);
+			this.$http.get(path)
+				.then(function(response) {
+					console.log(response);
+				});
 		}
 	},
 	filters: {
-		currency:function(price){
+		currency: function(price) {
 			return "$".concat(price.toFixed(2));
 		}
 	}
 });
+
+
 
