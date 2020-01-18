@@ -5,7 +5,8 @@ new Vue({
 		products: [],
 		cart: [],
 		search:"",
-		lastSearch:""
+		lastSearch:"",
+		loading:false
 	},
 
 	methods: {
@@ -45,12 +46,17 @@ new Vue({
 		},
 		onSubmit: function() {
 			// console.log("search")
+			this.products =[];
+			this.loading =true;
 			var path = "/search?q=".concat(this.search);
 			this.$http.get(path)
 				.then(function(response) {
 					// console.log(response);
-					this.products = response.body;
-					this.lastSearch = this.search;
+					setTimeout(function(){
+						this.products = response.body;
+						this.lastSearch = this.search;
+						this.loading = false;
+					}.bind(this), 3000);
 				});
 		}
 	},
