@@ -1,4 +1,5 @@
 var LOAD_NUM = 4;
+var watcher;
 
 new Vue({
 	el: "#app",
@@ -49,6 +50,9 @@ new Vue({
 					this.lastSearch = this.search;
 					this.loading = false;
 				});
+		},
+		appendResults: function() {
+			console.log("Append results");
 		}
 	},
 	filters: {
@@ -58,11 +62,16 @@ new Vue({
 	},
 	created: function() {
 		this.onSubmit();
+	},
+	updated: function() {
+		var sensor = document.querySelector("#product-list-bottom");
+		watcher = scrollMonitor.create(sensor);
+		watcher.enterViewport(this.appendResults);
+	},
+	beforeUpdate: function() {
+		if (watcher) {
+			watcher.destroy();
+			watcher = null;
+		}
 	}
 });
-
-var sensor = document.querySelector("#product-list-bottom")
-var watcher = scrollMonitor.create(sensor);
-watcher.enterViewport(function(){
-	console.log("Sensor Has Entered The ViewPort.")
-})
